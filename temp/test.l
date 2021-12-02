@@ -1,0 +1,37 @@
+%{
+   /* Definition section */
+  #include<stdio.h>
+  #include "y.tab.h"
+
+  // extern int yylval;
+  int cnt = 0;
+  //char names[20][8];
+  //float type[20] = {0};
+  //int lookup(char str[]);
+
+%}
+  
+/* Rule Section ([<>]=?|[!=]=)|"++"|"--"    { return yytext; }*/
+%%
+[0-9]+                      { yylval.ival = atoi(yytext); return N; }
+[0-9]*"."[0-9]+             { yylval.fval = atof  (yytext); return FN; }
+[-+%(){};=/*]                { return yytext[0]; }
+[a-z]                       { yylval.ival = *yytext - 'a'; return ID; }
+([_a-zA-Z][0-9]*)+          { return ID; }
+
+%%
+
+/*int lookup(char str[]) {
+  int i;
+  for(i=0; i<cnt;i++) {
+    if(strcmp(names[i],str)==0)
+      return i;
+  }
+  cnt++;
+  strcpy(names[i], str);
+  return i;
+}*/
+  
+int yywrap() {
+ return 1;
+}

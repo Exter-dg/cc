@@ -1,0 +1,28 @@
+class student {
+    marks = 0;
+};
+
+student.marks=1;
+
+a = 5;
+b += a;
+
+if(a==5) {
+    b+=a;
+}
+else if(a==4)
+    b=0;
+else 
+    b=1;
+
+for(i=0;i<5;i++)
+{
+    a+=1;
+    b=a;
+}
+
+for(;;)
+    a=1;
+
+for(i=0;;)
+    a=1;
